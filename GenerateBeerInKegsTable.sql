@@ -1,19 +1,19 @@
 /* SEQUENCES */
-CREATE SEQUENCE BeerSEQ START WITH 1;
-CREATE SEQUENCE KegSEQ START WITH 1;
+CREATE SEQUENCE LocalBeerSEQ START WITH 1;
+CREATE SEQUENCE LocalKegSEQ START WITH 1;
 
 /* DATA GENERATION PROCEDURE */
 BEGIN
   FOR i IN 1..37500 LOOP    
-    IF MOD(KegSEQ.nextval, 5) = 1 THEN
-        INSERT INTO BeerInKegs(beerID, kegID) VALUES (BeerSEQ.nextval, KegSEQ.currval);
+    IF MOD(LocalKegSEQ.nextval, 5) = 1 THEN
+        INSERT INTO BeerInKegs(beerID, kegID) VALUES (LocalBeerSEQ.nextval, LocalKegSEQ.currval);
     ElSE
-        INSERT INTO BeerInKegs(beerID, kegID) VALUES (BeerSEQ.currval, KegSEQ.currval); 
+        INSERT INTO BeerInKegs(beerID, kegID) VALUES (LocalBeerSEQ.currval, LocalKegSEQ.currval); 
     END IF;
   END LOOP;
 END;
 /
 
 /* DROP DATA NECESSARY ONLY FOR DATABASE FILL */
-DROP SEQUENCE KegSEQ;
-DROP SEQUENCE BeerSEQ;
+DROP SEQUENCE LocalKegSEQ;
+DROP SEQUENCE LocalBeerSEQ;
