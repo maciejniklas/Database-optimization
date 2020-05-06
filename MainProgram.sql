@@ -55,6 +55,14 @@ CREATE TABLE Keg
   kegCapacity NUMBER(2) NOT NULL
 );
 
+CREATE TABLE BeerInBreweries
+(
+  breweryID NUMBER(9) NOT NULL,
+  beerID NUMBER(9) NOT NULL,
+  CONSTRAINT BeerInBreweriesFK1 FOREIGN KEY (breweryID) REFERENCES Brewery (breweryID) ON DELETE CASCADE,
+  CONSTRAINT BeerInBreweriesFK2 FOREIGN KEY (beerID) REFERENCES Beer (beerID) ON DELETE CASCADE
+);
+
 /* SEQUENCES */
 CREATE SEQUENCE AddressSEQ START WITH 1;
 CREATE SEQUENCE BrewerySEQ START WITH 1;
@@ -85,6 +93,9 @@ END;
 @D:\Repositories\DatabaseOptimization\GenerateBreweryTable.sql;
 @D:\Repositories\DatabaseOptimization\GenerateEmployeeTable.sql;
 @D:\Repositories\DatabaseOptimization\GenerateBeerStyleTable.sql;
+@D:\Repositories\DatabaseOptimization\GenerateBeerTable.sql;
+@D:\Repositories\DatabaseOptimization\GenerateKegTable.sql;
+@D:\Repositories\DatabaseOptimization\GenerateBeerInBreweriesTable.sql;
 
 /* DROP DATA NECESSARY ONLY FOR DATABASE FILL */
 DROP SEQUENCE AddressSEQ;
