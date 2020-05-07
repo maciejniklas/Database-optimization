@@ -97,17 +97,19 @@ END;
 /
 
 /* FILL DATABASE */
-@D:\Repositories\DatabaseOptimization\GenerateAddressTable.sql;
-@D:\Repositories\DatabaseOptimization\GenerateBreweryTable.sql;
-@D:\Repositories\DatabaseOptimization\GenerateEmployeeTable.sql;
-@D:\Repositories\DatabaseOptimization\GenerateBeerStyleTable.sql;
-@D:\Repositories\DatabaseOptimization\GenerateBeerTable.sql;
-@D:\Repositories\DatabaseOptimization\GenerateKegTable.sql;
-@D:\Repositories\DatabaseOptimization\GenerateBeerInBreweriesTable.sql;
-@D:\Repositories\DatabaseOptimization\GenerateBeerInKegsTable.sql;
+@D:\Repositories\DatabaseOptimization\Report_1\GenerateAddressTable.sql;
+@D:\Repositories\DatabaseOptimization\Report_1\GenerateBreweryTable.sql;
+@D:\Repositories\DatabaseOptimization\Report_1\GenerateEmployeeTable.sql;
+@D:\Repositories\DatabaseOptimization\Report_1\GenerateBeerStyleTable.sql;
+@D:\Repositories\DatabaseOptimization\Report_1\GenerateBeerTable.sql;
+@D:\Repositories\DatabaseOptimization\Report_1\GenerateKegTable.sql;
+@D:\Repositories\DatabaseOptimization\Report_1\GenerateBeerInBreweriesTable.sql;
+@D:\Repositories\DatabaseOptimization\Report_1\GenerateBeerInKegsTable.sql;
 
 /* DROP DATA NECESSARY ONLY FOR DATABASE FILL */
 DROP SEQUENCE AddressSEQ;
 DROP SEQUENCE BrewerySEQ;
 DROP TRIGGER BreweryTRIG;
 DROP TRIGGER EmployeeTRIG;
+
+COMMIT;
