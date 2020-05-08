@@ -34,8 +34,10 @@ namespace OracleMultithreadingTest.Users
             {
                 case UserType.ConnectionTester:
                     return new ConnectionTester();
-                case UserType.CommonDataReader:
-                    return new CommonDataReader();
+                case UserType.Brewer1:
+                    return new Brewer1();
+                case UserType.Brewer2:
+                    return new Brewer2();
                 default:
                     Console.WriteLine("Unknown user type {0}!", type);
                     break;

@@ -3,6 +3,13 @@
     enum UserType
     {
         ConnectionTester,
-        CommonDataReader
+        Brewer1,
+        Brewer2,
+        BreweryOwner,
+        DatabaseAdmin,
+        Brewmaster,
+        Secretary,
+        WebServiceUser,
+        StoreKeeper
     }
 }

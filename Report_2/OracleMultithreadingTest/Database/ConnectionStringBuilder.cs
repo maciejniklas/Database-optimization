@@ -12,14 +12,14 @@ namespace OracleMultithreadingTest
                 if(connectionStringBuilder == null)
                 {
                     connectionStringBuilder = new OracleConnectionStringBuilder();
-
                     Console.Write("Login: ");
-                    connectionStringBuilder.UserID = Console.ReadLine();
+                    connectionStringBuilder.UserID = "homeuser";// Console.ReadLine();
 
                     Console.Write("Password: ");
-                    connectionStringBuilder.Password = Console.ReadLine();
+                    connectionStringBuilder.Password = "homepassword";// Console.ReadLine();
 
                     connectionStringBuilder.DataSource = defaultDataSource;
+                    Console.WriteLine("CHANGE LOGIN METHOD BEFORE COMMIT");
                 }
 
                 return connectionStringBuilder.ConnectionString;

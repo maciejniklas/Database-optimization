@@ -28,9 +28,36 @@ namespace OracleMultithreadingTest
             Console.WriteLine(exception.StackTrace);
         }
 
-        public void Modify(string statement)
+        public void Modify(string statement, params object[] parameters)
         {
-            throw new NotImplementedException();
+            try
+            {
+                connection.Open();
+
+                OracleCommand command = new OracleCommand();
+                command.Connection = connection;
+                command.CommandText = statement;
+                command.CommandType = CommandType.Text;
+
+                if(parameters != null)
+                {
+                    for (int index = 0; index < parameters.Length; index++)
+                    {
+                        command.Parameters.Add(":param" + index.ToString(), parameters[index]);
+                    }
+                }
+
+                command.ExecuteNonQuery();
+
+                command.CommandText = "COMMIT";
+                command.ExecuteNonQuery();
+
+                connection.Close();
+            }
+            catch (Exception exception)
+            {
+                HandleException(exception);
+            }
         }
 
         public DataTable Read(string statement)
@@ -64,6 +91,8 @@ namespace OracleMultithreadingTest
         {
             try
             {
+                DataTable data = new DataTable();
+
                 connection.Open();
 
                 OracleGlobalization globalization = connection.GetSessionInfo();
@@ -72,7 +101,23 @@ namespace OracleMultithreadingTest
                 Console.WriteLine("Language: {0}", globalization.Language);
                 Console.WriteLine("Territory: {0}", globalization.Territory);
 
+                OracleCommand command = new OracleCommand();
+                command.Connection = connection;
+                command.CommandText = "SELECT table_name FROM user_tables";
+                command.CommandType = CommandType.Text;
+
+                OracleDataReader reader = command.ExecuteReader();
+                data.Load(reader);
+
                 connection.Close();
+
+                foreach (DataRow row in data.Rows)
+                {
+                    foreach (DataColumn column in data.Columns)
+                    {
+                        Console.WriteLine(row[column].ToString());
+                    }
+                }
             }
             catch (Exception exception)
             {
