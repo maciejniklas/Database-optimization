@@ -7,9 +7,6 @@
         Brewer2,
         BreweryOwner,
         DatabaseAdmin,
-        Brewmaster,
-        Secretary,
-        WebServiceUser,
-        StoreKeeper
+        AccessPointAmountTester
     }
 }

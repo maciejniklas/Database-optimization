@@ -1,7 +1,4 @@
-﻿using OracleMultithreadingTest.Users;
-using System;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System;
 
 namespace OracleMultithreadingTest
 {
@@ -9,21 +6,11 @@ namespace OracleMultithreadingTest
     {
         static void Main(string[] args)
         {
-            List<AbstractUser> users = new List<AbstractUser>();
-            List<Thread> threads = new List<Thread>();
-
-            //users.Add(UserFactory.Instance.Create(UserType.ConnectionTester));
-            users.Add(UserFactory.Instance.Create(UserType.Brewer1));
-            users.Add(UserFactory.Instance.Create(UserType.Brewer2));
-
-            users.ForEach(item =>
-            {
-                Thread thread = new Thread(new ThreadStart(item.StartWork));
-                threads.Add(thread);
-                thread.Start();
-            });
-
-            threads.ForEach(item => item.Join());
+            TestHandler.ConcurrencyFirstExample();
+            Console.WriteLine();
+            TestHandler.AccessPointAmountExample();
+            Console.WriteLine();
+            TestHandler.ConcurrencySecondExample();
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();

@@ -14,6 +14,11 @@ namespace OracleMultithreadingTest
             connection.ConnectionString = ConnectionStringBuilder.ConnectionString;
         }
 
+        public void CloseConnection()
+        {
+            connection.Close();
+        }
+
         private void HandleException(Exception exception)
         {
             if (connection.State == System.Data.ConnectionState.Open)
@@ -58,6 +63,11 @@ namespace OracleMultithreadingTest
             {
                 HandleException(exception);
             }
+        }
+
+        public void OpenConnection()
+        {
+            connection.Open();
         }
 
         public DataTable Read(string statement)

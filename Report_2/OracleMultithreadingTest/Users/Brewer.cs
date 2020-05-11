@@ -17,17 +17,26 @@ namespace OracleMultithreadingTest.Users
 
         public override void StartWork()
         {
-            Communicate("This beer is almost good. I must update its alcohol percentage value about plus 0.1.");
+            Communicate("This beer is almost good. I must update its alcohol percentage value about " + modifier);
+
+            if (username.Contains("1"))
+            {
+                Communicate("Time for a sip of a coffee");
+                Thread.Sleep(2000);
+            }
 
             Communicate("Oh, there it is!");
             Read();
 
-            Communicate("Time for a sip of a coffee");
-            Thread.Sleep(2000);
-
             Communicate("Right then, let's update this value");
             alcoholPercent += modifier;
             database.Modify(string.Format("UPDATE Beer SET alcoholPercent = :param0 WHERE beerID = :param1"), new object[] { alcoholPercent, beerID });
+
+            if (username.Contains("2"))
+            {
+                Communicate("Time for a sip of a coffee");
+                Thread.Sleep(2000);
+            }
 
             Communicate("It's done. Let's see my masterwork. It should be about " + alcoholPercent);
             Read();

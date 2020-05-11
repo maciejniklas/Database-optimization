@@ -38,6 +38,12 @@ namespace OracleMultithreadingTest.Users
                     return new Brewer1();
                 case UserType.Brewer2:
                     return new Brewer2();
+                case UserType.AccessPointAmountTester:
+                    return new AccessPointAmountTester();
+                case UserType.BreweryOwner:
+                    return new BreweryOwner();
+                case UserType.DatabaseAdmin:
+                    return new DatabaseAdmin();
                 default:
                     Console.WriteLine("Unknown user type {0}!", type);
                     break;
