@@ -1,0 +1,58 @@
+/* CHECK TABLES */
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'TempState')
+DROP TABLE TempState;
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'TempCapacity')
+DROP TABLE TempCapacity;
+IF EXISTS (SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'Keg')
+DROP TABLE Keg;
+
+/* TABLE */
+CREATE TABLE dbo.Keg
+(
+	id INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+	state VARCHAR(10),
+	capacity INT
+);
+
+/* TEMP TABLES */
+CREATE TABLE TempState
+(
+  tempID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+  tempValue VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE TempCapacity
+(
+  tempID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+  tempValue VARCHAR(100) NOT NULL
+);
+
+/* TEMPORARY DATA INSERTION FOR RANDOM REAL DATA GENERATION */
+
+INSERT INTO TempState(tempValue) VALUES ('empty');
+INSERT INTO TempState(tempValue) VALUES ('in use');
+INSERT INTO TempState(tempValue) VALUES ('full');
+
+INSERT INTO TempCapacity(tempValue) VALUES (50);
+INSERT INTO TempCapacity(tempValue) VALUES (30);
+INSERT INTO TempCapacity(tempValue) VALUES (25);
+INSERT INTO TempCapacity(tempValue) VALUES (20);
+
+/* DATA GENERATION PROCEDURE */
+DECLARE @index INT
+BEGIN
+	SET @index = 1;
+
+	WHILE(@index <= 100000)
+	BEGIN
+		INSERT INTO dbo.Keg(state, capacity) VALUES (
+			(SELECT tempValue FROM TempState WHERE tempID = CEILING(RAND() * (SELECT COUNT(*) FROM TempState))),
+			(SELECT tempValue FROM TempCapacity WHERE tempID = CEILING(RAND() * (SELECT COUNT(*) FROM TempCapacity)))
+			);
+		SET @index = @index + 1;
+	END
+END
+
+/* DROP TABLES */
+DROP TABLE TempState;
+DROP TABLE TempCapacity;

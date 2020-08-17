@@ -20,7 +20,9 @@ Please prepare a database design according to your wishes.The project should tak
 * Description of the statistics of the data.
 
 ## Technologies
-
+* **Database modeler and design** - ApexSQL Model 2019.02
+* **Database server** - Microsoft SQL Server 2019 15.0.2000.5
+* **Server management** - SQL Server Management Studio 15.0.18338.0
 
 ## Status
 Project is: **in progress**
