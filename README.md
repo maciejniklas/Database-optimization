@@ -19,10 +19,24 @@ Please prepare a database design according to your wishes.The project should tak
 * Description how the data is generated (minimum points for download from the internet, maximum points for writing code). If you write your own code, please include some part of the program code.
 * Description of the statistics of the data.
 
+### Report 2: Tests associated with multithreaded access (20 points)
+Please write a program which simulates real traffic in the database. You should test the access to your database with many threads (at least 50). The threads should simulate various aspects of different users
+(usual users, administrators, moderators, cashiers ... or other names depending on your project).
+
+Some of the threads should do some breaks to simulate real user behaviour. For example the user enters the cell and during editing the cell is going for a coffee, comes back and finishes with the editing. Of course, you can shorten the time or increase the number topics. Users in a random manner should do tasks like adding, deleting or do some editing to the database.
+
+**Your report should contain:**
+
+* Description of testing plan (for example: different types of users, different numbers of  admins, etc.)
+* Description of problem (for example: too many connections, timeout, concurrency, etc.)
+
 ## Technologies
-* **Database modeler and design** - ApexSQL Model 2019.02
-* **Database server** - Microsoft SQL Server 2019 15.0.2000.5
-* **Server management** - SQL Server Management Studio 15.0.18338.0
+* **ApexSQL Model** - version 2019.02
+* **Microsoft SQL Server 2019** - version 15.0.2000.5
+* **SQL Server Management Studio** - version 15.0.18338.0
+* **Microsoft Visual Studio Community 2019** - version 16.7.0
+* **Microsoft.Data.SqlClient** - version 2.0.0
+* **C#** - version 8.0
 
 ## Status
 Project is: **in progress**
