@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MultithreadedAccessTest.Database;
+using System;
 
 namespace MultithreadedAccessTest
 {
@@ -6,9 +7,9 @@ namespace MultithreadedAccessTest
     {
         static void Main(string[] args)
         {
-            AbstractDatabase database = new MicrosoftSQLDatabase();
+            TestAttemptHandler test = new TestAttemptHandler();
 
-            database.TestConnection();
+            test.OptimicticConcurrency();
 
             Console.WriteLine("Press any kley to exit.");
             Console.ReadKey();

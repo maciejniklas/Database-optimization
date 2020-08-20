@@ -37,6 +37,7 @@ Some of the threads should do some breaks to simulate real user behaviour. For e
 * **Microsoft Visual Studio Community 2019** - version 16.7.0
 * **Microsoft.Data.SqlClient** - version 2.0.0
 * **C#** - version 8.0
+* **ConsoleTables** - version 2.4.2
 
 ## Status
 Project is: **in progress**
