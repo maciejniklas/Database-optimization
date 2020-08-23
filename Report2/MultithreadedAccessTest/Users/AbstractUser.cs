@@ -42,11 +42,14 @@ namespace MultithreadedAccessTest.Users
 
         public virtual void Message(string message)
         {
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.Write($"{username}: ");
+            lock(TestAttemptHandler.outputSentinel)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.Write($"{username}: ");
 
-            Console.ResetColor();
-            Console.WriteLine($"{message}");
+                Console.ResetColor();
+                Console.WriteLine($"{message}");
+            }
         }
 
         public void Work()

@@ -16,6 +16,7 @@ namespace MultithreadedAccessTest.Users
 
             DataTable data =  database.Select("SELECT Brewery.name, BeerStyle.name, Beer.alcohol_percent FROM Brewery JOIN BeerInBreweries ON (Brewery.id = BeerInBreweries.brewery_id) JOIN Beer ON (Beer.id = BeerInBreweries.beer_id) JOIN BeerStyle ON (BeerStyle.id = Beer.beer_style_id) WHERE Beer.id = 1997;");
 
+            Message(string.Empty);
             table.AddRow(data.Rows[0].ItemArray);
             table.Write();
 
@@ -31,11 +32,12 @@ namespace MultithreadedAccessTest.Users
 
             data = database.Select("SELECT Brewery.name, BeerStyle.name, Beer.alcohol_percent FROM Brewery JOIN BeerInBreweries ON (Brewery.id = BeerInBreweries.brewery_id) JOIN Beer ON (Beer.id = BeerInBreweries.beer_id) JOIN BeerStyle ON (BeerStyle.id = Beer.beer_style_id) WHERE Beer.id = 1997;");
 
-            Message("Hmmm, interesting. That is a bigger value.");
-
+            Message(string.Empty);
             table.Rows.Clear();
             table.AddRow(data.Rows[0].ItemArray);
             table.Write();
+
+            Message("Nice!");
         }
     }
 }

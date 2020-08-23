@@ -7,11 +7,14 @@ namespace MultithreadedAccessTest
 {
     public class TestAttemptHandler
     {
+        public static object outputSentinel;
+
         private IFactory<AbstractUser> userFactory;
 
         public TestAttemptHandler()
         {
             userFactory = new UserFactory(UserType.BrewerFirst, Database.DatabaseType.MicrosoftSQL);
+            outputSentinel = new object();
         }
 
         public void ConnectionPointsAmount()
