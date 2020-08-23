@@ -1,4 +1,4 @@
 ﻿namespace MultithreadedAccessTest.Users
 {
-    public enum UserType { BrewerFirst, BrewerSecondd }
+    public enum UserType { BrewerFirst, BrewerSecondd, ConnectionTester }
 }

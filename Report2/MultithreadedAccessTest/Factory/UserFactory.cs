@@ -25,6 +25,9 @@ namespace MultithreadedAccessTest.Factory
 
                 case UserType.BrewerSecondd:
                     return new BrewerSecond(databaseFactory.Get());
+
+                case UserType.ConnectionTester:
+                    return new ConnectionTester(databaseFactory.Get());
             }
 
             return null;

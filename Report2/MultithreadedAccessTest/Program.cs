@@ -1,5 +1,5 @@
-﻿using MultithreadedAccessTest.Database;
-using System;
+﻿using System;
+using System.Threading;
 
 namespace MultithreadedAccessTest
 {
@@ -9,7 +9,9 @@ namespace MultithreadedAccessTest
         {
             TestAttemptHandler test = new TestAttemptHandler();
 
-            test.OptimicticConcurrency();
+            test.ConnectionPointsAmount();
+
+            Thread.CurrentThread.Join();
 
             Console.WriteLine("Press any kley to exit.");
             Console.ReadKey();

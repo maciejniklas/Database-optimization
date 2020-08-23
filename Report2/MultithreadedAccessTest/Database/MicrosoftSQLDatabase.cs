@@ -2,11 +2,21 @@
 using System;
 using System.Collections;
 using System.Data;
+using System.Data.Common;
+using System.Threading;
 
 namespace MultithreadedAccessTest.Database
 {
     public class MicrosoftSQLDatabase : IDatabase
     {
+        public DbConnection Connection
+        {
+            get
+            {
+                return connection;
+            }
+        }
+
         private SqlConnection connection;
 
         public MicrosoftSQLDatabase()

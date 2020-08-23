@@ -8,9 +8,19 @@ namespace MultithreadedAccessTest.Users
 {
     public abstract class AbstractUser : IUser
     {
+        public Thread Thread
+        {
+            get
+            {
+                return thread;
+            }
+        }
+
         protected string username;
         protected IDatabase database;
         protected ConsoleTable table;
+
+        private Thread thread;
 
         public AbstractUser(IDatabase database)
         {
@@ -41,7 +51,7 @@ namespace MultithreadedAccessTest.Users
 
         public void Work()
         {
-            Thread thread = new Thread(new ThreadStart(WorkProcedure));
+            thread = new Thread(new ThreadStart(WorkProcedure));
             thread.Start();
         }
 

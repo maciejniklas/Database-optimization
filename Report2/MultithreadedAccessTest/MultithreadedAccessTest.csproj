@@ -88,6 +88,7 @@
     <Compile Include="Factory\IFactory.cs" />
     <Compile Include="Users\BrewerFirst.cs" />
     <Compile Include="Users\BrewerSecond.cs" />
+    <Compile Include="Users\ConnectionTester.cs" />
     <Compile Include="Users\IUser.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
