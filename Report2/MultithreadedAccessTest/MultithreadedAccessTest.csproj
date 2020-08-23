@@ -86,6 +86,8 @@
     <Compile Include="Users\AbstractUser.cs" />
     <Compile Include="Factory\DatabaseFactory.cs" />
     <Compile Include="Factory\IFactory.cs" />
+    <Compile Include="Users\DatabaseAdmin.cs" />
+    <Compile Include="Users\BreweryOwner.cs" />
     <Compile Include="Users\BrewerFirst.cs" />
     <Compile Include="Users\BrewerSecond.cs" />
     <Compile Include="Users\ConnectionTester.cs" />

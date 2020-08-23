@@ -6,8 +6,8 @@ namespace MultithreadedAccessTest.Database
     public interface IDatabase
     {
         DbConnection Connection { get; }
-        DataTable Select(string sqlStatement);
+        DataTable Read(string sqlStatement);
         void TestConnection();
-        void Update(string sqlStatement);
+        void Modify(string sqlStatement);
     }
 }

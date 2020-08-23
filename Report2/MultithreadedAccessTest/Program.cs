@@ -9,7 +9,7 @@ namespace MultithreadedAccessTest
         {
             TestAttemptHandler test = new TestAttemptHandler();
 
-            test.OptimicticConcurrency();
+            test.PessimisticConcurrency();
 
             Thread.CurrentThread.Join();
 

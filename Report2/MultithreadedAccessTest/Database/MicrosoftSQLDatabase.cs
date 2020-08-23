@@ -3,7 +3,6 @@ using System;
 using System.Collections;
 using System.Data;
 using System.Data.Common;
-using System.Threading;
 
 namespace MultithreadedAccessTest.Database
 {
@@ -24,7 +23,30 @@ namespace MultithreadedAccessTest.Database
             connection = new SqlConnection(CustomConnectionString.ConnectionString);
         }
 
-        public DataTable Select(string sqlStatement)
+        public void Modify(string sqlStatement)
+        {
+            try
+            {
+                DataTable data = new DataTable();
+
+                connection.Open();
+
+                using (SqlCommand command = new SqlCommand(sqlStatement, connection))
+                {
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+            }
+            finally
+            {
+                connection.Close();
+            }
+        }
+
+        public DataTable Read(string sqlStatement)
         {
             try
             {
@@ -69,29 +91,6 @@ namespace MultithreadedAccessTest.Database
                 Console.WriteLine($"Network server time: {statistics["NetworkServerTime"]}");
             }
             catch(Exception exception)
-            {
-                Console.WriteLine(exception);
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-
-        public void Update(string sqlStatement)
-        {
-            try
-            {
-                DataTable data = new DataTable();
-
-                connection.Open();
-
-                using (SqlCommand command = new SqlCommand(sqlStatement, connection))
-                {
-                    command.ExecuteNonQuery();
-                }
-            }
-            catch (Exception exception)
             {
                 Console.WriteLine(exception);
             }

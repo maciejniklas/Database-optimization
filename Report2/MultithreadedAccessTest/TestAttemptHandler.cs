@@ -51,5 +51,17 @@ namespace MultithreadedAccessTest
             first.Work();
             second.Work();
         }
+
+        public void PessimisticConcurrency()
+        {
+            userFactory.SelectType(UserType.DatabaseAdmin);
+            AbstractUser amdin = userFactory.Get();
+
+            userFactory.SelectType(UserType.BreweryOwner);
+            AbstractUser owner = userFactory.Get();
+
+            amdin.Work();
+            owner.Work();
+        }
     }
 }

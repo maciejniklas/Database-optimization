@@ -28,6 +28,12 @@ namespace MultithreadedAccessTest.Factory
 
                 case UserType.ConnectionTester:
                     return new ConnectionTester(databaseFactory.Get());
+
+                case UserType.DatabaseAdmin:
+                    return new DatabaseAdmin(databaseFactory.Get());
+
+                case UserType.BreweryOwner:
+                    return new BreweryOwner(databaseFactory.Get());
             }
 
             return null;

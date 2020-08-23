@@ -26,8 +26,6 @@ namespace MultithreadedAccessTest.Users
         {
             this.database = database;
 
-            table = new ConsoleTable("Brewery name", "Beer style", "Alcohol percentage");
-
             username = GetType().ToString().Split('.').Last();
         }
 
