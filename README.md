@@ -30,6 +30,20 @@ Some of the threads should do some breaks to simulate real user behaviour. For e
 * Description of testing plan (for example: different types of users, different numbers of  admins, etc.)
 * Description of problem (for example: too many connections, timeout, concurrency, etc.)
 
+### Report 3: Performance tests (25 points)
+You should choose 5-10 queries (depending on complexity). Please explain the plan for your queries. You should have big queries (not 5 queries which look like SELECT * FROM TABLE WHERE ID=1). Your queries should have some subqueries, joins, etc.
+
+Please test the performance of the database using the mechanisms available in the database (no manual timing by example). The results should be described. On the basis of the measurements you should propose several ways to solve the problem and present measurements for each of them choosing the best. Make a comparison of the performance before and after optimization.
+
+For each query you should create as much optimization as possible.
+You can do this in the following steps.
+
+* Choose a query from your list.
+* Create alternatives for this query (e.g. join could be presented as subquery in some cases) and explain your plan.
+* Write one or two sentences why this query is not the best one and why the new query is better (or if the first query is best one, then explain why).
+* Provide the execution plan for your query. (This is not difficult - see the links in the previous sections: use EXPLAIN or do some clicking in Visual Studio.)
+* This you should do for 5 bad queries. So in total you will have 10 queries (5 bad queries and 5 good queries, that are doing the same as the bad queries). 
+
 ## Technologies
 * **ApexSQL Model** - version 2019.02
 * **Microsoft SQL Server 2019** - version 15.0.2000.5
